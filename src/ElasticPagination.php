@@ -8,6 +8,10 @@ use Illuminate\Support\Str;
 
 class ElasticPagination extends LengthAwarePaginator{
 
+    /**
+     * @param int $page
+     * @return string
+     */
     public function url($page)
     {
 

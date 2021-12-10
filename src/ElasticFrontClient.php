@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\Http;
 
 class ElasticFrontClient{
 
+    /**
+     * @param $wpAuth
+     * @param $wpAdminUrl
+     * @return \Illuminate\Http\Client\PendingRequest
+     */
     public static function wpClient($wpAuth,$wpAdminUrl)
     {
         return Http::withHeaders([
@@ -26,6 +31,11 @@ class ElasticFrontClient{
             ->build();
     }
 
+    /**
+     * @param $model
+     * @param $entity
+     * @return array|callable|false[]
+     */
     public function delete($model,$entity)
     {
         $params = [
@@ -38,6 +48,11 @@ class ElasticFrontClient{
         return $this->client->delete($params);
     }
 
+    /**
+     * @param $model
+     * @param $item
+     * @return array|callable
+     */
     public function index($model,$item)
     {
         return $this->bulkEntityUpload($model,[$item]);

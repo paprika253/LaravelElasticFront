@@ -3,6 +3,12 @@
 namespace Niocncn\ElasticFront\Traits;
 
 trait SearchQueryTrait{
+
+    /**
+     * @param $match
+     * @param array $fields
+     * @return $this
+     */
     public function searchRelevant($match, array $fields = []) : self
     {
         if(empty($fields) && $this->model::$searchFields) $fields = $this->model::$searchFields;

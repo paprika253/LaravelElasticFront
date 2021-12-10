@@ -373,6 +373,11 @@ class ElasticQuery
         return $this->whereNotIn($field, Arr::wrap($value), $preserveKey);
     }
 
+    /**
+     * @param string $field
+     * @param array $values
+     * @return string
+     */
     private function getTermKey(string $field, array $values) : string
     {
         $key = "$field.keyword";
