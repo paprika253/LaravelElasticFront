@@ -15,11 +15,11 @@ class ElasticFrontClient{
      */
     public static function wpClient($wpAuth,$wpAdminUrl)
     {
-        return Http::withHeaders([
+        return Http::withHeaders(array_merge([
             "Content-Type" => "application/json",
             "Accept" => "application/json",
             "Authorization" => 'Basic ' . base64_encode($wpAuth)
-        ])->baseUrl($wpAdminUrl . '/wp-json/wp/v2/');
+        ],config('app.wp_add_headers',[])))->baseUrl($wpAdminUrl . '/wp-json/wp/v2/');
     }
 
     public $client;
