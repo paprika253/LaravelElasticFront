@@ -1,9 +1,9 @@
 {
   "name": "niocncn/laravel-elastic-front",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Laravel Elastic Front",
   "require": {
-    "php": "^7.3",
+    "php": "^7.3|^8.0",
     "illuminate/support": "^8",
     "illuminate/contracts": "^8",
     "illuminate/database": "^8",
