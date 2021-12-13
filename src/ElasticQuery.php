@@ -285,6 +285,18 @@ class ElasticQuery
     }
 
     /**
+     * @return mixed
+     */
+    public function firstOrFail()
+    {
+        $elem = $this->first();
+
+        if(! $elem) abort(404);
+
+        return $elem;
+    }
+
+    /**
      *
      * @param $field
      * @param $value
