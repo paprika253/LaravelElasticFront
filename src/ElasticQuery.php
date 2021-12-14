@@ -403,4 +403,48 @@ class ElasticQuery
 
         return $key;
     }
+    
+    public function categoryIn(mixed $needle)
+    {
+        if (is_string($needle)) return $this->where('_categories', (int) $needle);
+
+        return $this->whereIn('_categories', $needle);
+    }
+
+    public function postNotIn(int $id)
+    {
+        return $this->whereNot('id', $id);
+    }
+
+    public function withRequest()
+    {
+        $requestMethods = array_keys(request()->query());
+        $availableMethods = get_class_methods($this);
+
+        $filteredMethods = array_intersect($requestMethods, $availableMethods);
+
+        foreach($filteredMethods as $method) {
+            $methodParams = request()->query()[$method];
+            $this->{$method}($methodParams);
+        }
+
+        return $this;
+    }
+
+    public function withQuery(array $query = null)
+    {
+        if ($query) {
+            $requestMethods = array_keys($query);
+            $availableMethods = get_class_methods($this);
+
+            $filteredMethods = array_intersect($requestMethods, $availableMethods);
+
+            foreach($filteredMethods as $method) {
+                $methodParams = $query[$method];
+                $this->{$method}($methodParams);
+            }
+        }
+
+        return $this;
+    }
 }
