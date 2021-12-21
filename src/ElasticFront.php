@@ -75,4 +75,20 @@ abstract class ElasticFront implements Arrayable, ArrayAccess {
         return new $className();
     }
 
+    /**
+     * @return array
+     */
+    public function toArray() : array
+    {
+        return $this->attributes;
+    }
+
+    /**
+     * @return string
+     */
+    public function toJson() : string
+    {
+        return json_encode($this->toArray());
+    }
+
 }
