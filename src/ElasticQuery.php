@@ -148,6 +148,15 @@ class ElasticQuery
         $this->limit = $limit;
         return $this;
     }
+    
+    /**
+     * @param $limit
+     * @return $this
+     */
+    public function take($limit) : self
+    {
+        return $this->limit($limit);
+    }
 
     /**
      * @param $sort
